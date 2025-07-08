@@ -1,22 +1,15 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
-
-int main() {
-#include <stdio.h>
-
 int main()
 {
-
 	int torre = 0;
 	int bispo = 0;
+	int movimentoCavalo = 1;  
 
 	int quantidade = 0;
 	char direcao;
 
-	printf("Digite a quantidade de casas da [Torre] (entre 1 e 8): ");
+	printf("Digite a quantidade de casas da [TORRE] (entre 1 e 8): ");
 	scanf("%d", &quantidade);
 
 	while(getchar() != '\n');
@@ -60,33 +53,112 @@ int main()
 
 	if(quantidade < 1 || quantidade > 8 ) {
 		printf("\nNumero invalido!\n");
-	    } else {
-		    ("Bispo Movimentado-se para diagonal a direita\n");
-		  do{
-		      printf("Diagonal a direita\n");
-		      bispo ++;
-		  } while(bispo < quantidade);
-    }
-    
-    // RAINHA
+	} else {
+		("Bispo Movimentado-se para diagonal a direita\n");
+		do {
+			printf("Diagonal a direita\n");
+			bispo ++;
+		} while(bispo < quantidade);
+	}
+
+	// RAINHA
 
 	printf("\nMovimento da Rainha:\n ");
 	printf("Digite a quantidade de casas da [RAINHA] (entre 1 e 8): ");
 	scanf("%d", &quantidade);
-	
-	if(quantidade < 1 || quantidade > 8){
-	    printf("Limite ultrapassado! ");
-	}else{
-	    for(int rainha= 1; rainha <= quantidade; rainha++ ){
-	        printf("Rainha move-se para Esquerda\n");
-	    }
+
+	if(quantidade < 1 || quantidade > 8) {
+		printf("Limite ultrapassado! ");
+	} else {
+		for(int rainha= 1; rainha <= quantidade; rainha++ ) {
+			printf("Rainha move-se para Esquerda\n");
+		}
 	}
 
-		return 0;
+// USANDO O [[ CAVALO ]]
+
+	printf("\nEscolha a direcao [CAVALO]] (S > sobe / R > recuar / D > direita / E > Esquerda): ");
+	scanf(" %c", &direcao); // espaco antes do %c para ignorar o \n
+
+	if(direcao == 'S' || direcao == 's') {
+		while (movimentoCavalo --) {
+			for(int i = 0; i < 2; i++) {
+				printf("Sobe\n");
+			}
+			printf("\nEscolha a direcao: D > direita / E > Esquerda): ");
+			scanf(" %c", &direcao);
+
+			if(direcao == 'D' || direcao == 'd') {
+
+				printf("Direita\n");
+			} else if (direcao == 'E' || direcao == 'e') {
+				printf("Esquerda\n");
+			} else {
+				printf("Opcao invalida\n");
+			}
+		}
+	}
+
+	if(direcao == 'R' || direcao == 'r') {
+		while (movimentoCavalo --) {
+			for(int i = 0; i < 2; i++) {
+				printf("Desce\n");
+			}
+			printf("\nEscolha a direcao: D > direita / E > Esquerda): ");
+			scanf(" %c", &direcao);
+
+			if(direcao == 'D' || direcao == 'd') {
+
+				printf("Direita\n");
+			} else if (direcao == 'E' || direcao == 'e') {
+				printf("Esquerda\n");
+			} else {
+				printf("Opcao invalida\n");
+			}
+		}
+	}
+
+	if(direcao == 'D' || direcao == 'd') {
+		while (movimentoCavalo --) {
+			for(int i = 0; i < 2; i++) {
+				printf("Direita\n");
+			}
+			printf("\nEscolha a direcao: S > Sobe / R > Recua): ");
+			scanf(" %c", &direcao);
+
+			if(direcao == 'S' || direcao == 's') {
+
+				printf("Sobe\n");
+			} else if (direcao == 'R' || direcao == 'r') {
+				printf("Desce\n");
+			} else {
+				printf("Opcao invalida\n");
+			}
+		}
+	}
+	
+
+	if(direcao == 'E' || direcao == 'e') {
+		while (movimentoCavalo --) {
+			for(int i = 0; i < 2; i++) {
+				printf("Esquerda\n");
+			}
+			printf("\nEscolha a direcao: S > Sobe / R > Recua): ");
+			scanf(" %c", &direcao);
+
+			if(direcao == 'S' || direcao == 's') {
+
+				printf("Sobe\n");
+			} else if (direcao == 'R' || direcao == 'r') {
+				printf("Desce\n");
+			} else {
+				printf("Opcao invalida\n");
+			}
+		}
+	}
+
+	return 0;
 }
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
 
     // Nível Mestre - Funções Recursivas e Loops Aninhados
     // Sugestão: Substitua as movimentações das peças por funções recursivas.
